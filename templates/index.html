@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Heart Disease Prediction</h2>
+        <form action="{{ url_for('predict_route') }}" method="POST">
+            <div class="input-group">
+                <label for="male">Gender (1 = Male, 0 = Female)</label>
+                <input type="number" id="male" name="male" required>
+            </div>
+            <div class="input-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="input-group">
+                <label for="currentSmoker">Current Smoker (1 = Yes, 0 = No)</label>
+                <input type="number" id="currentSmoker" name="currentSmoker" required>
+            </div>
+            <div class="input-group">
+                <label for="cigsPerDay">Cigarettes Per Day</label>
+                <input type="number" step="any" id="cigsPerDay" name="cigsPerDay" required>
+            </div>
+            <div class="input-group">
+                <label for="BPMeds">On Blood Pressure Meds (1 = Yes, 0 = No)</label>
+                <input type="number" id="BPMeds" name="BPMeds" required>
+            </div>
+            <div class="input-group">
+                <label for="prevalentStroke">Prevalent Stroke (1 = Yes, 0 = No)</label>
+                <input type="number" id="prevalentStroke" name="prevalentStroke" required>
+            </div>
+            <div class="input-group">
+                <label for="prevalentHyp">Prevalent Hypertension (1 = Yes, 0 = No)</label>
+                <input type="number" id="prevalentHyp" name="prevalentHyp" required>
+            </div>
+            <div class="input-group">
+                <label for="diabetes">Diabetes (1 = Yes, 0 = No)</label>
+                <input type="number" id="diabetes" name="diabetes" required>
+            </div>
+            <div class="input-group">
+                <label for="totChol">Total Cholesterol</label>
+                <input type="number" step="any" id="totChol" name="totChol" required>
+            </div>
+            <div class="input-group">
+                <label for="sysBP">Systolic Blood Pressure</label>
+                <input type="number" step="any" id="sysBP" name="sysBP" required>
+            </div>
+            <div class="input-group">
+                <label for="diaBP">Diastolic Blood Pressure</label>
+                <input type="number" step="any" id="diaBP" name="diaBP" required>
+            </div>
+            <div class="input-group">
+                <label for="BMI">BMI</label>
+                <input type="number" step="any" id="BMI" name="BMI" required>
+            </div>
+            <div class="input-group">
+                <label for="heartRate">Heart Rate</label>
+                <input type="number" step="any" id="heartRate" name="heartRate" required>
+            </div>
+            <div class="input-group">
+                <label for="glucose">Glucose</label>
+                <input type="number" step="any" id="glucose" name="glucose" required>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction %}
+        <div class="result">
+            <h3>{{ prediction }}</h3>
+        </div>
+        {% endif %}
+        <a href="{{ url_for('reports') }}">View Reports</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</body>
+</html>
