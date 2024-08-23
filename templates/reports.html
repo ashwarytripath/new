@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Reports</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Your Reports</h2>
+        {% if reports %}
+        <ul>
+            {% for report in reports %}
+            <li>
+                <strong>Prediction:</strong> {{ report.prediction }}<br>
+                <strong>Age:</strong> {{ report.age }} | <strong>Gender:</strong> {{ 'Male' if report.male == 1 else 'Female' }} | <strong>Smoker:</strong> {{ report.currentSmoker }}<br>
+                <strong>Cholesterol:</strong> {{ report.totChol }} | <strong>BP:</strong> {{ report.sysBP }}/{{ report.diaBP }} | <strong>BMI:</strong> {{ report.BMI }}<br>
+                <strong>Glucose:</strong> {{ report.glucose }} | <strong>Heart Rate:</strong> {{ report.heartRate }}<br>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No reports available.</p>
+        {% endif %}
+        <a href="{{ url_for('index') }}">Back to Prediction</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</body>
+</html>
+
