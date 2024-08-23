@@ -8,7 +8,9 @@ import os
 # Initialize Flask app
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'your_default_secret_key')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/Users/ashwa/Downloads/database.db'
+
+# Update this line with your database connection details
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:@127.0.0.1:3306/database'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize database
@@ -155,4 +157,3 @@ def reports():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
