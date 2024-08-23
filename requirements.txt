@@ -1,5 +1,6 @@
 Flask
 scikit-learn
+mysql-connector-python
 Flask-SQLAlchemy==3.0.4
 Werkzeug==2.3.3
 numpy==1.24.3
